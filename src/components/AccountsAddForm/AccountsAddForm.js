@@ -17,7 +17,7 @@ const propTypes = {
 
 
 /**
- * Displays Account add from.
+ * Displays account add from.
  */
 class AccountsAddForm extends PureComponent {
 	constructor (props, context) {
@@ -38,7 +38,6 @@ class AccountsAddForm extends PureComponent {
 		}
 
 		this.props.addAccount({
-			// @todo we should to correct convert to js float
 			balance: this.state.accountBalance,
 		});
 

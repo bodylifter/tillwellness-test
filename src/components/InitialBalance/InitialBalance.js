@@ -14,7 +14,7 @@ const propTypes = {
 };
 
 /**
- * Displays initial balance;
+ * Displays initial balance.
  * 
  * @param {Object} props
  * @param {number} props.value

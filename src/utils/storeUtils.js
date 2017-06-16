@@ -14,7 +14,7 @@ import monthlyPaymentReducer from '../reducers/monthlyPaymentReducer';
  */
 
 /**
- * Returns base reducer.
+ * Returns a base reducer.
  *
  * @returns {AppStoreState}
  */
@@ -37,7 +37,7 @@ function getMiddlewares () {
 }
 
 /**
- * Creates configured store.
+ * Creates a configured store.
  *
  * @param initialState
  * @returns {Object}
@@ -64,7 +64,7 @@ function configureStore(initialState = {}) {
 
 
 /**
- * Makes redux action.
+ * Makes a redux action.
  * 
  * @param {string|Symbol} type
  * @param {any} [payload=undefined]

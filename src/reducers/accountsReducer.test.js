@@ -10,7 +10,7 @@ describe('accountsReducer', () => {
 		expect(state.length).toBe(1);
 	});
 
-	it ('should add one account', () => {
+	it ('should add two accounts', () => {
 		let state = accountsReducer([], storeUtils.makeAction(accountActionTypes.ADD_ACCOUNT, { balance: 500 }));
 		state = accountsReducer(state, storeUtils.makeAction(accountActionTypes.ADD_ACCOUNT, { balance: 200.4 }));
 

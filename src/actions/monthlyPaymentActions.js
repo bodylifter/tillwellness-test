@@ -4,7 +4,7 @@ import monthlyPaymentActionTypes from './monthlyPaymentActionTypes';
 
 
 /**
- * Set payment.
+ * Sets payment value.
  *
  * @param {Object} options
  * @param {number} options.value Payment value.

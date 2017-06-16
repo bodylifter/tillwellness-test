@@ -1,4 +1,5 @@
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
+
 
 /**
  * Returns all accounts.

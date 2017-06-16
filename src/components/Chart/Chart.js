@@ -30,7 +30,11 @@ function Chart (props) {
 		monthlyPayment,
 	} = props;
 
-	if ( initialBalance === 0 || monthlyPayment === 0 || initialBalance < monthlyPayment ) {
+	if (
+		initialBalance === 0 || 
+		monthlyPayment === 0 || 
+		initialBalance < monthlyPayment
+	) {
 		return null;
 	}
 	

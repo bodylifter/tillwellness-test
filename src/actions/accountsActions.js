@@ -4,7 +4,7 @@ import accountActionTypes from './accountsActionTypes';
 
 
 /**
- * Add an account.
+ * Adds an account.
  *
  * @param {Object} options
  * @param {number} options.balance Account balance.
@@ -19,7 +19,7 @@ function addAccount (options) {
 	}
 
 	return (dispatch) => dispatch(storeUtils.makeAction(accountActionTypes.ADD_ACCOUNT, {
-		balance: options.balance,
+		balance,
 	}));
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import accountSelectors from '../../selectors/accountsSelectors';
 
 const baseCssClassName = 'accounts-list';
 
@@ -10,10 +11,10 @@ const propTypes = {
 };
 
 /**
- * Accounts list.
+ * Displays accounts list.
  *
  * @param {Object} props
- * @param {Array.<Object>} props.accounts
+ * @param {Array.<AccountModel>} props.accounts
  */
 function AccountsList (props) {
 	return (
@@ -27,6 +28,10 @@ function AccountsList (props) {
 
 AccountsList.propTypes = propTypes;
 
+export {
+	AccountsList,
+};
+
 export default connect((state) => ({
-	accounts: state.accounts,
+	accounts: accountSelectors.selectAccounts(state),
 }))(AccountsList);

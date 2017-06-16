@@ -7,9 +7,16 @@ import monthlyPaymentReducer from '../reducers/monthlyPaymentReducer';
 
 
 /**
+ * @typedef {Object} AppStoreState
+ *
+ * @property {AccountsStoreState} accounts
+ * @property {MonthlyPaymentStoreState} monthlyPayment
+ */
+
+/**
  * Returns base reducer.
  *
- * @returns {Object.<string, Function>}
+ * @returns {AppStoreState}
  */
 function getReducer () {
     return combineReducers({
@@ -65,6 +72,10 @@ function configureStore(initialState = {}) {
  * @returns {ReduxAction}
  */
 function makeAction (type, payload = undefined, meta = undefined) {
+	if ( !type || !( typeof type === 'string' || type instanceof Symbol ) ) {
+		throw new Error('Argument type should be a string or Symbol');
+	}
+
 	return {
 		type,
 		payload,

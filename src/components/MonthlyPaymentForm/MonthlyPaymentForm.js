@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-
+import PropTypes from 'prop-types';
 import SumField from '../SumField';
 
 import { connect } from 'react-redux';
@@ -10,11 +10,24 @@ import monthlyPaymentActions from '../../actions/monthlyPaymentActions';
 
 const baseCssClassName = 'monthly-payment-form';
 
+const propTypes = {
+	monthlyPayment: PropTypes.number.isRequired,
+	setPayment: PropTypes.func.isRequired,
+};
 
+/**
+ * Displays monthly payment form.
+ */
 class MonthlyPaymentForm extends PureComponent {
+	/**
+	 * @param {number} value
+	 * @private
+	 */
 	_handleChange = (value) => {
+		console.dir(value);
+
 		this.props.setPayment({
-			value,
+			value: ( value || 0 ),
 		});
 	}
 
@@ -26,6 +39,12 @@ class MonthlyPaymentForm extends PureComponent {
 		);
 	}
 }
+
+MonthlyPaymentForm.propTypes = propTypes;
+
+export {
+	MonthlyPaymentForm,
+};
 
 export default connect((state) => ({
 	monthlyPayment: state.monthlyPayment,

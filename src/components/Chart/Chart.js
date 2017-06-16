@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 import { connect } from 'react-redux';
 
-import chartUtils from '../../utils/chart';
+import chartUtils from '../../utils/chartUtils';
+import accountSelectors from '../../selectors/accountsSelectors';
+import monthlyPaymentSelectors from '../../selectors/monthlyPaymentSelectors';
+
+import './styles/Chart.css';
 
 
 const baseCssClassNames = 'chart';
+const descriptionCssClassNames = `${baseCssClassNames}__description`;
 
 const propTypes = {
 	initialBalance: PropTypes.number.isRequired,
@@ -25,12 +30,13 @@ function Chart (props) {
 		monthlyPayment,
 	} = props;
 
-	if ( initialBalance === 0 || monthlyPayment === 0 ) {
+	if ( initialBalance === 0 || monthlyPayment === 0 || initialBalance < monthlyPayment ) {
 		return null;
 	}
 	
 	return (
 		<div className={baseCssClassNames}>
+			<div className={descriptionCssClassNames}>Balance of accounts after a number of months</div>
 			<LineChart
 				width={600}
 				height={300}
@@ -42,6 +48,7 @@ function Chart (props) {
 			>
 				<XAxis dataKey={'name'} />
 				<YAxis/>
+				<Tooltip />
 				<CartesianGrid strokeDasharray={'3 3'} />
 				<Line type={'monotone'} dataKey={'value'} stroke={'#8884d8'} activeDot={{ r: 8 }}/>
 			</LineChart>
@@ -51,8 +58,11 @@ function Chart (props) {
 
 Chart.propTypes = propTypes;
 
+export {
+	Chart,
+};
+
 export default connect((state) => ({
-	// @todo use selector to memoize result
-	initialBalance: state.accounts.reduce((total, account) => (total + account.balance), 0),
-	monthlyPayment: state.monthlyPayment,
+	initialBalance: accountSelectors.selectBalance(state),
+	monthlyPayment: monthlyPaymentSelectors.selectPayment(state),
 }))(Chart);

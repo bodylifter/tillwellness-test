@@ -8,6 +8,8 @@ modules.xml
 profiles_settings.xml
 jsLibraryMappings.xml
 
+.idea/
+coverage
 # User-specific stuff:
 .idea/**/workspace.xml
 .idea/**/tasks.xml

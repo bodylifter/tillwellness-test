@@ -1,6 +1,7 @@
-import storeUtils from '../utils/store';
+import storeUtils from '../utils/storeUtils';
 
 import monthlyPaymentActionTypes from './monthlyPaymentActionTypes';
+
 
 /**
  * Set payment.

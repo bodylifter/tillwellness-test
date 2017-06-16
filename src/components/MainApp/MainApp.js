@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Provider as StoreProvider } from 'react-redux'
-import storeUtils from '../../utils/store';
+import storeUtils from '../../utils/storeUtils';
 
 import ChartApp from '../ChartApp';
 
@@ -9,7 +9,7 @@ import ChartApp from '../ChartApp';
 /**
  * Entry point.
  */
-class App extends Component {
+class MainApp extends Component {
 	constructor (props, context) {
 		super(props, context);
 
@@ -25,4 +25,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default MainApp;

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
@@ -7,9 +8,17 @@ import accountActions from '../../actions/accountsActions';
 
 import SumField from '../SumField';
 
+
 const baseCssClassName = 'accounts-add-form';
 
+const propTypes = {
+	addAccount: PropTypes.func.isRequired,
+};
 
+
+/**
+ * Displays Account add from.
+ */
 class AccountsAddForm extends PureComponent {
 	constructor (props, context) {
 		super(props, context);
@@ -20,6 +29,14 @@ class AccountsAddForm extends PureComponent {
 	}
 
 	_handleSubmitClick = () => {
+		const {
+			accountBalance,
+		} = this.state;
+
+		if ( !accountBalance ) {
+			return;
+		}
+
 		this.props.addAccount({
 			// @todo we should to correct convert to js float
 			balance: this.state.accountBalance,
@@ -47,6 +64,12 @@ class AccountsAddForm extends PureComponent {
 		);
 	}
 }
+
+AccountsAddForm.propTypes = propTypes;
+
+export {
+	AccountsAddForm,
+};
 
 export default connect(null, (dispatch) => bindActionCreators({
 	addAccount: accountActions.addAccount,

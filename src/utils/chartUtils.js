@@ -24,4 +24,4 @@ function buildData (options) {
 
 export default {
 	buildData,
-}
+};

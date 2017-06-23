@@ -4,7 +4,7 @@ import { createSelector } from 'reselect';
 /**
  * Returns all accounts.
  *
- * @param {Object} state
+ * @param {AppStoreState} state
  */
 const selectAccounts = (state) => state.accounts;
 
@@ -19,4 +19,4 @@ const selectBalance = createSelector(
 export default {
 	selectAccounts,
 	selectBalance,
-}
+};
